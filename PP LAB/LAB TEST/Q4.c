@@ -31,3 +31,5 @@ void main() {
 // Theory:-  
 // OpenMP offers the schedule clause, with a set of predefined iteration scheduling strategies, to spedify how 
 // (and when) this assignment of iterations to threads is done.
+
+// For more information:- http://jakascorner.com/blog/2016/06/omp-for-scheduling.html
