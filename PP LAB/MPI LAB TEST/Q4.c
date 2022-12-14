@@ -5,7 +5,7 @@
 // do not give high input because the stack will overflow and no output will be seen (segmentation fault)
 // try n = 7 or 8
 void main(int argc, char* argv[]) {
-  int n, rank = 0, size, global;
+  int n, rank, size, root = 0, global;
   scanf("%d", &n);
   MPI_Init(&argc, &argv);
   MPI_Comm_size(MPI_COMM_WORLD, &size);
@@ -14,10 +14,9 @@ void main(int argc, char* argv[]) {
   MPI_Bcast(&n, 1, MPI_INT, root, MPI_COMM_WORLD);
   int localProduct = 1;
   int len = (n / size) + 1;
-  //printf("RANK %d\n",rank);
   for (int i = (rank * len) + 1;i <= ((rank + 1) * len);i++) {
     if (i > n) break;
-    locaprodl *= i;
+    localProduct *= i;
   }
   printf("LOCAL PROF:%d\n", localProduct);
   MPI_Reduce(&localProduct, &global, 1, MPI_INT, MPI_PROD, root, MPI_COMM_WORLD);
