@@ -31,3 +31,42 @@ void main(int argc, char* argv[]) {
   }
   MPI_Finalize();
 }
+
+// Theoretical Stuffs:- 
+// MPI_Gather
+// MPI_Gather is the inverse of MPI_Scatter. Instead of spreading elements from one process to many processes, 
+// MPI_Gather takes elements from many processes and gathers them to one single process.
+// This routine is used in parallel sorting and searching.
+
+// MPI_Gather takes elements from each process and gathers them to the root process. 
+
+// Syntax:-
+// MPI_Gather(
+//   void* send_data,
+//   int send_count,
+//   MPI_Datatype send_datatype,
+//   int recv_count,
+//   MPI_Datatype recv_datatype,
+//   int root,
+//   MPI_Comm communicator)  
+
+
+// In MPI_Gather, only the root process needs to have a valid receive buffer. All other calling processes can pass NULL for recv_data. 
+// Also, don’t forget that the recv_count parameter is the count of elements received per process, 
+// not the total summation of counts from all processes.
+
+
+// MPI_Scatter
+// MPI_Scatter involves a designated root process sending data to all processes in a communicator. 
+// The primary difference between MPI_Bcast and MPI_Scatter is that MPI_Bcast sends the same piece of data to all processes 
+// while MPI_Scatter sends chunks of an array to different processes. 
+
+// Syntax:- 
+// MPI_Scatter(
+//   void* send_data,
+//   int send_count,            // number of elements in the array divided by the number of processes
+//   MPI_Datatype send_datatype,
+//   int recv_count,
+//   MPI_Datatype recv_datatype,
+//   int root,
+//   MPI_Comm communicator)

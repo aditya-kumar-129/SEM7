@@ -4,13 +4,12 @@
 #include<stdlib.h>
 
 void main(int argc, char* argv[]) {
-  char outmsg[100] = "welcome to ise!";
-  char inmsg[100];
-  int numtasks, rank, dest, source, rc, count, tag = 1;
+  char outmsg[100] = "welcome to ise!", inmsg[100];
+  int size, rank, dest, source, rc, count, tag = 1;
   MPI_Status stat;
 
   MPI_Init(&argc, &argv);
-  MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
+  MPI_Comm_size(MPI_COMM_WORLD, &size);
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
   if (rank == 0) {
