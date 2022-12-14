@@ -8,6 +8,7 @@ int main(int argc, char* argv[]) {
   char inmsg[100];
   int dest, source, rc, count, tag1 = 1, tag2 = 2;
   MPI_Status stat;
+  
   MPI_Init(&argc, &argv);
   int size, rank;
   MPI_Comm_size(MPI_COMM_WORLD, &size);
