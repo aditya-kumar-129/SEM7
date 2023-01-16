@@ -17,7 +17,7 @@ void main() {
 // Theory:- 
 // The critical construct restricts execution of the associated structured block to a single thread at a time.
 // The syntax of the critical construct is as follows :
-//   #pragma omp critical [(name) [[,] hint(hint-expression)] ] new-line 
+//   #pragma omp critical [(name) [[,] hint(hint-expression)]] new-line 
 //   structured - block
 
 // Use OpenMP critical sections to prevent multiple threads from accessing the critical section's code at the same time, 

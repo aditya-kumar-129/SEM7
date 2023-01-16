@@ -5,7 +5,7 @@
 
 #define num_steps 1000000 // infinity assumption
 
-int main(int argc, char* argv[]) {
+int main() {
   double pi = 0;
 
   // Serial Execution
@@ -13,8 +13,7 @@ int main(int argc, char* argv[]) {
   for (int k = 0; k < num_steps; k++) pi += pow(-1, k) / (2 * k + 1);
   pi = 4 * pi;
   double end = omp_get_wtime();
-  double time = end - start;
-  printf("Value of pi in serial : %lf with time : %lf\n", pi, time);
+  printf("Value of pi in serial : %lf with time : %lf\n", pi, end - start);
   
   // Parallel Execution
   pi = 0;
@@ -28,7 +27,6 @@ int main(int argc, char* argv[]) {
   for (int i = 0; i < 4; i++) pi += thread[i];
   pi = 4 * pi;
   end = omp_get_wtime();
-  time = end - start;
-  printf("value of pi in parallel : %lf with time : %lf\n", pi, time);
+  printf("value of pi in parallel : %lf with time : %lf\n", pi, end - start);
   return 0;
 }

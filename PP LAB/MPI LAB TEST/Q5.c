@@ -13,18 +13,17 @@ int isprime(int x) {
 
 void main(int argc, char* argv[]) {
   int size, rank, root = 0, n;
-  printf("enter n\n");
+  printf("enter n: \n");
   scanf("%d", &n);
-  int* globaldata = malloc(n * sizeof(int));
   MPI_Init(&argc, &argv);
   MPI_Comm_size(MPI_COMM_WORLD, &size);
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
   MPI_Bcast(&n, 1, MPI_INT, root, MPI_COMM_WORLD);
+  int* globaldata = malloc(n * sizeof(int));
   for (int i = 0;i < n;i++) globaldata[i] = i + 1;
-  int itern = (n / size) + 1;
-  printf("\nrank %d itern %d size %d n %d\n", rank, itern, size, n);
-  for (int i = (rank * itern);i < ((rank + 1) * itern);i++) {
+  int len = (n / size) + 1;
+  for (int i = (rank * len);i < ((rank + 1) * len);i++) {
     if (i > n) break;
     if (isprime(globaldata[i])) printf("%d ", globaldata[i]);
   }

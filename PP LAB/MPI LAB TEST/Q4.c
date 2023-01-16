@@ -18,20 +18,19 @@ void main(int argc, char* argv[]) {
     if (i > n) break;
     localProduct *= i;
   }
-  printf("LOCAL PROF:%d\n", localProduct);
   MPI_Reduce(&localProduct, &global, 1, MPI_INT, MPI_PROD, root, MPI_COMM_WORLD);
   if (rank == root) printf("Factorial of %d is %d\n", n, global);
   MPI_Finalize();
 }
 
-// MPI_Reduce( void* send_data, void* recv_data, int count, MPI_Datatype datatype, MPI_Op op, int root, MPI_Comm communicator)
+// MPI_Reduce(void* send_data, void* recv_data, int count, MPI_Datatype datatype, MPI_Op op, int root, MPI_Comm communicator)
 // Input Parameters
-// send_data:- address of send buffer(choice)
-// count :- number of elements in send buffer(integer)
-// datatype :- data type of elements of send buffer(handle)
-// op :- reduce operation(handle)
-// root :- rank of root process(integer)
-// comm :- communicator(handle)
+// send_data:- address of send buffer
+// count :- number of elements in send buffer
+// datatype :- data type of elements of send buffer
+// op :- reduce operation
+// root :- rank of root process
+// comm :- communicator
 
 // Output Parameters
 // recvbuf:- address of receive buffer(choice, significant only at root)
