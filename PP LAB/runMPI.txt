@@ -1,0 +1,15 @@
+Use the below URL for practice of MPI PROGRAMS:-
+https://replit.com/languages/c
+
+to compile the MPI program use the following command line: 
+mpicc filename.c
+
+to run the MPI program use the following command line:
+mpirun -np 4 ./a.out
+
+
+To compile the openMp program use the following command line:
+gcc -fopenmp filename.c
+
+to run the openMp program use the following command line:
+./a.out
