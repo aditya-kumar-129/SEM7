@@ -1,13 +1,12 @@
-data(iris)
-str(iris)
-
 #install.packages("caTools")
 #install.packages("randomForest")
 library(caTools)
 library(randomForest)
 
-split = sample.split(iris, SplitRatio = 0.7)
+data(iris)
+str(iris)
 
+split = sample.split(iris, SplitRatio = 0.7)
 training_data = subset(iris, split == TRUE)
 testing_data = subset(iris, split == FALSE)
 

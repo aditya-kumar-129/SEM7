@@ -1,25 +1,10 @@
-data(iris)
-str(iris)
+# install.packages("ggfortify")   #autoplot function is present in this package
+library("ggfortify")
 
-# install.packages("gtools")
-# install.packages("ClusterR")
-# install.packages("cluster")
-# install.packages("ggfortify")
+# data <- data.frame(x= c(2,2,8,5,7,6,1,4,3), y= c(10,5,4,8,5,4,2,9,9))
+data1 = data.frame(x = c(1,1,7,4,6,5,1,4,3), y=c(9,6,3,8,6,5,2,9,9))
 
-library(gtools)
-library(ClusterR)
-library(cluster)
-library(ggfortify)
-
-# Fitting K-Means clustering Model to training dataset
-set.seed(240) # Setting seed
-kmeans = kmeans(iris[-5], centers = 3, nstart = 20)
-kmeans
-
-# Cluster identification for each observation
-kmeans$cluster
-
-# Confusion Matrix
-table(iris$Species, kmeans$cluster)
-
-autoplot(kmeans,iris[-5], frame= TRUE)
+# when the center is 2
+model = kmeans(data, 2)
+model$centers
+autoplot(model, data, frame = TRUE)
